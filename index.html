@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Linktree Personal</title>
+    <!-- Favicon básico (32x32) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Para Apple Touch (180x180) - iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Para Android/Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+    <!-- Windows Metro -->
+    <meta name="msapplication-TileImage" content="/mstile-150x150.png">
+    <meta name="msapplication-TileColor" content="#2b5797">
+
+    <!-- Safari Pinned Tab -->
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Tema de color para navegadores móviles -->
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="./app/globals.css">
+
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image">
+                👤
+            </div>
+            <h1>Tu Nombre</h1>
+            <p>Creador de contenido digital</p>
+        </div>
+
+        <div class="links-container" id="linksContainer">
+            <!-- Los links se cargarán dinámicamente aquí -->
+        </div>
+    </div>
+
+    <script>
+        // Configuración de links - Personaliza aquí tus enlaces
+        const links = [
+
+        ];
+
+        // Función para crear las tarjetas de links
+        function createLinkCards() {
+            const container = document.getElementById('linksContainer');
+
+            links.forEach((link, index) => {
+                const linkCard = document.createElement('a');
+                linkCard.className = 'link-card';
+                linkCard.href = link.url;
+                linkCard.target = '_blank';
+                linkCard.rel = 'noopener noreferrer';
+
+                linkCard.innerHTML = `
+                    <div class="link-emoji">${link.emoji}</div>
+                    <div class="link-content">
+                        <div class="link-title">${link.title}</div>
+                        <div class="link-description">${link.description}</div>
+                    </div>
+                    <div class="link-arrow">→</div>
+                `;
+
+                container.appendChild(linkCard);
+            });
+        }
+
+        // Función para crear partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            createLinkCards();
+            createParticles();
+        });
+
+        // Agregar efecto de click con ondas
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.link-card')) {
+                const ripple = document.createElement('div');
+                const card = e.target.closest('.link-card');
+                const rect = card.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                    z-index: 1;
+                `;
+
+                card.style.position = 'relative';
+                card.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+
+        // CSS para el efecto ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
