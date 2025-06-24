@@ -38,4 +38,5 @@ export const FALLBACK_DATA: LinksData = {
 }
 
 export const PARTICLE_COUNT = 20
-export const LINKS_JSON_URL = "/links.json"
+// Usar ruta relativa para que funcione tanto en desarrollo como en producción
+export const LINKS_JSON_URL = (typeof window !== 'undefined' ? window.location.pathname.replace(/\/[^/]*$/, '') : '') + "/links.json"

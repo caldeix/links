@@ -1,8 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/links' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/links/' : '',
+  basePath: '/links',
+  assetPrefix: '/links/',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,7 +13,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-  },
-}
+  }
+};
 
-export default nextConfig
+export default nextConfig;
