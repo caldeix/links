@@ -1,0 +1,66 @@
+{
+  "profile": {
+    "name": "Luis Miguel Caldeiro Fernandez",
+    "description": "Desarrollador, apasionado por la tecnología",
+    "emoji": "/profile-pic.png"
+  },
+  "categories": [
+    { "id": "todos", "name": "Todos", "emoji": "🌟" },
+    { "id": "social", "name": "Social", "emoji": "🌐" },
+    { "id": "trabajo", "name": "Trabajo", "emoji": "💼" },
+    { "id": "contacto", "name": "Contacto", "emoji": "📞" },
+    { "id": "apps", "name": "Apps", "emoji": "📱" }
+  ],
+  "links": [
+    {
+      "emoji": "💼",
+      "title": "LinkedIn",
+      "description": "Conecta conmigo",
+      "url": "https://linkedin.com/in/caldeiro-luism",
+      "category": "social"
+    },
+    {
+      "emoji": "🌐",
+      "title": "Mi sitio web",
+      "description": "Mi CV habilidades y trayectoria",
+      "url": "https://caldeix.github.io/me",
+      "category": "trabajo"
+    },
+    {
+      "emoji": "📧",
+      "title": "Email",
+      "description": "Envíame un mensaje",
+      "url": "mailto:caldeiro@protonmail.com",
+      "category": "contacto"
+    },
+    {
+      "emoji": "💻",
+      "title": "GitHub",
+      "description": "Mis proyectos",
+      "url": "https://github.com/caldeix",
+      "category": "trabajo"
+    },
+    {
+      "emoji": "📱",
+      "title": "Instagram",
+      "description": "@bycaldeix",
+      "url": "https://instagram.com/bycaldeix",
+      "category": "social"
+    },
+    {
+      "emoji": "🎵",
+      "title": "Spotify",
+      "description": "¿Que escucho mientras trabajo?",
+      "url": "https://open.spotify.com/playlist/6aemMFx5ploTQ5DxMvHdHc?si=cff8f55d9b3b4b52",
+      "category": "social"
+    },
+    {
+      "emoji": "📱",
+      "title": "2budget",
+      "description": "aplicación definitiva diseñada para simplificar y optimizar la gestión de las finanzas en pareja ❤️",
+      "url": "https://caldeix.github.io/2budget",
+      "category": "apps"
+    }  
+   
+  ]
+}
