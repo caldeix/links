@@ -26,6 +26,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="./app/globals.css">
+    <link rel="stylesheet" href="./styles/globals.css">
 
 </head>
 
@@ -37,8 +38,7 @@
             <div class="profile-image">
                 👤
             </div>
-            <h1>Tu Nombre</h1>
-            <p>Creador de contenido digital</p>
+            <h1>LINKS: Caldeix</h1>
         </div>
 
         <div class="links-container" id="linksContainer">
@@ -47,14 +47,33 @@
     </div>
 
     <script>
-        // Configuración de links - Personaliza aquí tus enlaces
-        const links = [
-
-        ];
+        // Función para cargar los links desde el archivo JSON
+        async function loadLinks() {
+            try {
+                // Usar ruta absoluta para producción y desarrollo
+                const basePath = window.location.hostname === 'localhost' ? '' : '/links';
+                const response = await fetch(`${basePath}/links.json`);
+                if (!response.ok) {
+                    throw new Error('No se pudo cargar el archivo de links');
+                }
+                const links = await response.json();
+                createLinkCards(links);
+            } catch (error) {
+                console.error('Error al cargar los links:', error);
+                // Mostrar mensaje de error en la interfaz
+                const container = document.getElementById('linksContainer');
+                container.innerHTML = `
+                    <div class="error-message">
+                        No se pudieron cargar los enlaces. Por favor, inténtalo de nuevo más tarde.
+                    </div>
+                `;
+            }
+        }
 
         // Función para crear las tarjetas de links
-        function createLinkCards() {
+        function createLinkCards(links) {
             const container = document.getElementById('linksContainer');
+            container.innerHTML = ''; // Limpiar contenedor
 
             links.forEach((link, index) => {
                 const linkCard = document.createElement('a');
@@ -67,7 +86,7 @@
                     <div class="link-emoji">${link.emoji}</div>
                     <div class="link-content">
                         <div class="link-title">${link.title}</div>
-                        <div class="link-description">${link.description}</div>
+                        ${link.description ? `<div class="link-description">${link.description}</div>` : ''}
                     </div>
                     <div class="link-arrow">→</div>
                 `;
@@ -81,7 +100,7 @@
             const particlesContainer = document.getElementById('particles');
             const particleCount = 20;
 
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i <particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
@@ -93,7 +112,7 @@
 
         // Inicializar la página
         document.addEventListener('DOMContentLoaded', function () {
-            createLinkCards();
+            loadLinks();
             createParticles();
         });
 
