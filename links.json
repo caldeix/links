@@ -42,25 +42,18 @@
     },
     {
       "emoji": "📱",
-      "title": "Instagram",
-      "description": "@bycaldeix",
-      "url": "https://instagram.com/bycaldeix",
-      "category": "social"
-    },
-    {
-      "emoji": "🎵",
-      "title": "Spotify",
-      "description": "¿Que escucho mientras trabajo?",
-      "url": "https://open.spotify.com/playlist/6aemMFx5ploTQ5DxMvHdHc?si=cff8f55d9b3b4b52",
-      "category": "social"
-    },
-    {
-      "emoji": "📱",
       "title": "2budget",
       "description": "Gestión de las finanzas en pareja ❤️",
       "url": "https://caldeix.github.io/2budget",
       "category": "apps"
-    }  
+    },
+     {
+      "emoji": "📱",
+      "title": "HABITS IDLE",
+      "description": "App para gamificar tus habitos",
+      "url": "https://caldeix.github.io/idle_habits/",
+      "category": "apps"
+    }   
    
   ]
 }
