@@ -5,11 +5,11 @@
     "emoji": "/profile-pic.png"
   },
   "categories": [
-    { "id": "todos", "name": "Todos", "emoji": "🌟" },
-    { "id": "social", "name": "Social", "emoji": "🌐" },
-    { "id": "trabajo", "name": "Trabajo", "emoji": "💼" },
+    { "id": "todos",    "name": "Todos",    "emoji": "🌟" },
+    { "id": "social",   "name": "Social",   "emoji": "🌐" },
+    { "id": "trabajo",  "name": "Trabajo",  "emoji": "💼" },
     { "id": "contacto", "name": "Contacto", "emoji": "📞" },
-    { "id": "apps", "name": "Apps", "emoji": "📱" }
+    { "id": "apps",     "name": "Apps",     "emoji": "📱" }
   ],
   "links": [
     {
@@ -22,7 +22,7 @@
     {
       "emoji": "🌐",
       "title": "Mi sitio web",
-      "description": "Mi CV habilidades y trayectoria",
+      "description": "Mi CV, habilidades y trayectoria",
       "url": "https://caldeix.github.io/me",
       "category": "trabajo"
     },
@@ -41,19 +41,36 @@
       "category": "trabajo"
     },
     {
-      "emoji": "📱",
+      "emoji": "💰",
       "title": "2budget",
-      "description": "Gestión de las finanzas en pareja ❤️",
+      "description": "Gestión de finanzas en pareja ❤️",
       "url": "https://caldeix.github.io/2budget",
-      "category": "apps"
+      "category": "apps",
+      "github": "https://github.com/caldeix/2budget"
     },
-     {
-      "emoji": "📱",
-      "title": "HABITS IDLE",
-      "description": "App para gamificar tus habitos",
+    {
+      "emoji": "🎮",
+      "title": "Habits Idle",
+      "description": "Gamifica tus hábitos diarios",
       "url": "https://caldeix.github.io/idle_habits/",
-      "category": "apps"
-    }   
-   
+      "category": "apps",
+      "github": "https://github.com/caldeix/idle_habits"
+    },
+    {
+      "emoji": "📈",
+      "title": "Crypto Portfolio",
+      "description": "Seguimiento de tu cartera cripto",
+      "url": "https://caldeix.github.io/-crypto_portfolio/",
+      "category": "apps",
+      "github": "https://github.com/caldeix/-crypto_portfolio"
+    },
+    {
+      "emoji": "🖼️",
+      "title": "Ambient Wall",
+      "description": "Wallpapers dinámicos de ambiente",
+      "url": "https://github.com/caldeix/AMBIENT-WALL",
+      "category": "apps",
+      "github": "https://github.com/caldeix/AMBIENT-WALL"
+    }
   ]
 }
