@@ -1,68 +1,82 @@
-# Gestor de Enlaces
+# Links · Caldeix
 
 [![Autor](https://img.shields.io/badge/Autor-caldeix-blue)](https://github.com/caldeix)
-[![Versión](https://img.shields.io/badge/Versión-1.0.0-brightgreen)](https://github.com/caldeix/links/releases)
-[![Última Actualización](https://img.shields.io/badge/Última%20Actualización-junio%202025-orange)](https://github.com/caldeix/links/commits/main)
+[![Versión](https://img.shields.io/badge/Versión-1.4.0-brightgreen)](https://github.com/caldeix/links/releases)
+[![Última Actualización](https://img.shields.io/badge/Última%20Actualización-mayo%202026-orange)](https://github.com/caldeix/links/commits/main)
+[![Deploy](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue)](https://caldeix.github.io/links/)
 
-## 🚀 Descripción del Proyecto
-Una aplicación web moderna para gestionar y organizar enlaces importantes. Desarrollada con Next.js, esta aplicación ofrece una interfaz limpia y receptiva para categorizar y acceder a tus recursos web favoritos.
+## Descripción
 
-## ✨ Características
+Agregador de enlaces personales estilo Linktree. Construido con **Next.js 15** y **Tailwind CSS**, con exportación estática para GitHub Pages. Los datos se cargan desde un JSON externo para que añadir o editar enlaces sea trivial sin tocar código.
 
-### 🔗 Gestión de Enlaces
-- **Añadir Nuevos Enlaces**: Añade fácilmente enlaces con títulos, URLs y descripciones
-- **Categorización**: Organiza enlaces en categorías personalizadas para una mejor gestión
-- **Búsqueda**: Encuentra rápidamente enlaces específicos usando la función de búsqueda
-- **Vista Previa**: Generación automática de vistas previas para un mejor reconocimiento visual
+## Características
 
-### 🎨 Interfaz de Usuario
-- **Diseño Responsive**: Funciona perfectamente en dispositivos de escritorio y móviles
-- **Modo Claro/Oscuro**: Alterna entre esquemas de color para una navegación cómoda
-- **Arrastrar y Soltar**: Interfaz intuitiva para organizar enlaces y categorías
-- **Iconos Personalizables**: Asigna iconos personalizados a diferentes categorías
+- **Filtrado por categoría** — pestañas interactivas con animación gold/violet
+- **Diseño premium dark** — paleta oscura profunda con acentos dorados y violeta, partículas flotantes y efecto shimmer en hover
+- **Sin hydration mismatch** — posiciones de partículas deterministas (seeded random)
+- **Fallback automático** — si `links.json` falla, muestra datos de ejemplo con aviso visual
+- **Responsive** — diseñado mobile-first, funciona en cualquier pantalla
+- **Doble implementación** — `index.html` standalone (sin dependencias) + app Next.js completa
 
-### 🔒 Gestión de Datos
-- **Almacenamiento Local**: Los enlaces se guardan en el almacenamiento local del navegador
-- **Exportar/Importar**: Haz copias de seguridad de tus enlaces o transfiérelos entre dispositivos
-- **Soporte JSON**: Importa/exporta enlaces en formato JSON para una fácil portabilidad
+## Tecnologías
 
-### ⚙️ Configuración
-- **Diseño Personalizable**: Elige entre vistas de cuadrícula o lista
-- **Opciones de Ordenación**: Ordena enlaces por nombre, fecha de adición u orden personalizado
-- **Atajos de Teclado**: Navega y gestiona enlaces usando atajos de teclado
+| Capa | Tecnología |
+|---|---|
+| Framework | Next.js 15 (static export) |
+| Estilos | Tailwind CSS 3 + CSS custom properties |
+| Iconos | Lucide React |
+| Deploy | GitHub Pages (`gh-pages`) |
 
-## 🛠️ Tecnologías Utilizadas
-- **Framework Frontend**: Next.js 14
-- **Estilos**: Tailwind CSS
-- **Gestión de Estado**: React Context API
-- **Iconos**: Lucide Icons
-- **Formularios**: React Hook Form
-- **Vista Previa de Enlaces**: API de Vista Previa de Enlaces
+## Personalización rápida
 
-## 📦 Comenzando
+Edita `public/links.json` — sin tocar código:
 
-### Requisitos Previos
-- Node.js 18+ y npm/yarn/pnpm
+```json
+{
+  "profile": {
+    "name": "Tu Nombre",
+    "description": "Tu descripción",
+    "emoji": "/profile-pic.png"
+  },
+  "categories": [
+    { "id": "todos",   "name": "Todos",   "emoji": "🌟" },
+    { "id": "social",  "name": "Social",  "emoji": "🌐" }
+  ],
+  "links": [
+    {
+      "emoji": "💼",
+      "title": "LinkedIn",
+      "description": "Conecta conmigo",
+      "url": "https://linkedin.com/in/tu-usuario",
+      "category": "social"
+    }
+  ]
+}
+```
 
-### Instalación
-1. Clona el repositorio
-2. Instala las dependencias:
-   ```bash
-   npm install
-   # o
-   yarn
-   # o
-   pnpm install
-   ```
-3. Inicia el servidor de desarrollo:
-   ```bash
-   npm run dev
-   # o
-   yarn dev
-   # o
-   pnpm dev
-   ```
-4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador
+## Desarrollo local
 
-## 📝 Licencia
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
+
+## Deploy
+
+```bash
+npm run deploy     # build + push a gh-pages
+```
+
+## Paleta de diseño
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--bg` | `#090A0F` | Fondo principal |
+| `--card` | `#16192B` | Tarjetas |
+| `--primary` | `#D4AF37` | Acento gold — CTAs |
+| `--secondary` | `#8A2BE2` | Acento violet |
+| `--text-muted` | `#A0AEC0` | Texto secundario |
+
+## Licencia
+
+MIT — ver [LICENSE](LICENSE) para más detalles.
