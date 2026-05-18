@@ -4,6 +4,7 @@ export interface Link {
   description: string
   url: string
   category: string
+  github?: string
 }
 
 export interface Category {
