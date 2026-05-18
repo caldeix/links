@@ -1,6 +1,6 @@
 # Links · Caldeix
 
-![Version](https://img.shields.io/badge/Versión-1.4.0-D4AF37?style=flat-square)
+![Version](https://img.shields.io/badge/Versión-1.5.0-D4AF37?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -11,6 +11,7 @@ Agregador de enlaces personales estilo Linktree. Los datos se cargan desde un ú
 
 ## Features
 
+- **GitHub strip en apps** — las tarjetas de la categoría Apps incluyen un footer con enlace directo al repositorio (violet hover + icono GitHub)
 - **Filtrado por categoría** — pestañas interactivas con animación gold/violet
 - **Diseño dark premium** — paleta `#090A0F` + acentos dorados y violeta, partículas flotantes y shimmer en hover
 - **Sin hydration mismatch** — posiciones de partículas deterministas (seeded random)
