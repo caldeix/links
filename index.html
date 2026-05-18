@@ -2,163 +2,398 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Linktree Personal</title>
-    <!-- Favicon básico (32x32) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links · Caldeix</title>
 
-    <!-- Para Apple Touch (180x180) - iOS -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./public/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./public/android-chrome-512x512.png">
+  <meta name="msapplication-TileImage" content="./public/mstile-150x150.png">
+  <meta name="msapplication-TileColor" content="#090A0F">
+  <meta name="theme-color" content="#090A0F">
 
-    <!-- Para Android/Chrome -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <style>
+    /* ── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --bg:          #090A0F;
+      --surface:     #0D0F1A;
+      --card:        #16192B;
+      --card-hover:  #1E2238;
+      --border:      rgba(255, 255, 255, 0.06);
+      --primary:     #D4AF37;
+      --primary-dim: rgba(212, 175, 55, 0.15);
+      --secondary:   #8A2BE2;
+      --secondary-dim: rgba(138, 43, 226, 0.15);
+      --success:     #00FF66;
+      --danger:      #FF3333;
+      --warning:     #FFA502;
+      --text:        #FFFFFF;
+      --text-muted:  #A0AEC0;
+      --text-dim:    #4A5568;
+      --glow-gold:   0 0 16px rgba(212, 175, 55, 0.35);
+      --glow-purple: 0 0 16px rgba(138, 43, 226, 0.35);
+      --shadow:      0 4px 24px rgba(0, 0, 0, 0.5);
+    }
 
-    <!-- Windows Metro -->
-    <meta name="msapplication-TileImage" content="/mstile-150x150.png">
-    <meta name="msapplication-TileColor" content="#2b5797">
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Safari Pinned Tab -->
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    html { scroll-behavior: smooth; }
 
-    <!-- Tema de color para navegadores móviles -->
-    <meta name="theme-color" content="#ffffff">
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+    }
 
-    <link rel="stylesheet" href="./app/globals.css">
-    <link rel="stylesheet" href="./styles/globals.css">
+    /* ── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar       { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: var(--card-hover); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.5); }
 
+    /* ── Particles ─────────────────────────────────────────────── */
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: pulse var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+    }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* ── Profile ───────────────────────────────────────────────── */
+    .profile {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fade-in 0.8s ease-out both;
+    }
+
+    .profile-ring {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: var(--glow-gold);
+    }
+
+    .profile-ring-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--surface);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .profile-ring-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .profile h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* ── Links ─────────────────────────────────────────────────── */
+    #links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+      animation: slide-up 0.6s ease-out both;
+    }
+
+    .link-card:hover {
+      background: var(--card-hover);
+      border-color: rgba(212, 175, 55, 0.45);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.06), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.7s ease;
+      pointer-events: none;
+    }
+
+    .link-card:hover::before { transform: translateX(100%); }
+
+    .link-emoji {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .link-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.3s;
+    }
+
+    .link-card:hover .link-title { color: var(--primary); }
+
+    .link-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 0.15rem;
+    }
+
+    .link-arrow {
+      color: var(--primary);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .link-card:hover .link-arrow { transform: translateX(4px); }
+
+    /* ── Error ─────────────────────────────────────────────────── */
+    .error-msg {
+      text-align: center;
+      color: var(--danger);
+      padding: 2rem;
+      background: rgba(255, 51, 51, 0.1);
+      border: 1px solid rgba(255, 51, 51, 0.3);
+      border-radius: 12px;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem 1rem;
+    }
+
+    .footer a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: var(--secondary); }
+    .footer-dot { color: var(--text-dim); }
+
+    /* ── Animations ────────────────────────────────────────────── */
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(1.5); }
+    }
+
+    @keyframes ripple {
+      to { transform: scale(2); opacity: 0; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="particles" id="particles"></div>
+  <div id="particles"></div>
 
-    <div class="container">
-        <div class="profile">
-            <div class="profile-image">
-                👤
-            </div>
-            <h1>LINKS: Caldeix</h1>
-        </div>
-
-        <div class="links-container" id="linksContainer">
-            <!-- Los links se cargarán dinámicamente aquí -->
-        </div>
+  <div class="container">
+    <div class="profile" id="profile">
+      <div class="profile-ring">
+        <div class="profile-ring-inner" id="profile-avatar">👤</div>
+      </div>
+      <h1 id="profile-name">Cargando...</h1>
+      <p class="profile-desc" id="profile-desc"></p>
     </div>
 
-    <script>
-        // Función para cargar los links desde el archivo JSON
-        async function loadLinks() {
-            try {
-                // Usar ruta absoluta para producción y desarrollo
-                const basePath = window.location.hostname === 'localhost' ? '' : '/links';
-                const response = await fetch(`${basePath}/links.json`);
-                if (!response.ok) {
-                    throw new Error('No se pudo cargar el archivo de links');
-                }
-                const links = await response.json();
-                createLinkCards(links);
-            } catch (error) {
-                console.error('Error al cargar los links:', error);
-                // Mostrar mensaje de error en la interfaz
-                const container = document.getElementById('linksContainer');
-                container.innerHTML = `
-                    <div class="error-message">
-                        No se pudieron cargar los enlaces. Por favor, inténtalo de nuevo más tarde.
-                    </div>
-                `;
-            }
-        }
+    <div id="links-container"></div>
 
-        // Función para crear las tarjetas de links
-        function createLinkCards(links) {
-            const container = document.getElementById('linksContainer');
-            container.innerHTML = ''; // Limpiar contenedor
+    <footer class="footer">
+      <span>Desarrollado por <a href="https://caldeix.github.io/links/" target="_blank" rel="noopener noreferrer">Caldeix</a></span>
+      <span class="footer-dot">•</span>
+      <span>© <span id="year"></span> Copyright</span>
+      <span class="footer-dot">•</span>
+      <span id="data-source" style="color: var(--text-dim)">Cargado desde JSON</span>
+    </footer>
+  </div>
 
-            links.forEach((link, index) => {
-                const linkCard = document.createElement('a');
-                linkCard.className = 'link-card';
-                linkCard.href = link.url;
-                linkCard.target = '_blank';
-                linkCard.rel = 'noopener noreferrer';
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-                linkCard.innerHTML = `
-                    <div class="link-emoji">${link.emoji}</div>
-                    <div class="link-content">
-                        <div class="link-title">${link.title}</div>
-                        ${link.description ? `<div class="link-description">${link.description}</div>` : ''}
-                    </div>
-                    <div class="link-arrow">→</div>
-                `;
+    const basePath = window.location.hostname === "localhost" ? "" : "/links";
 
-                container.appendChild(linkCard);
-            });
-        }
+    async function init() {
+      try {
+        const res = await fetch(`${basePath}/links.json`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        renderProfile(data.profile);
+        renderLinks(data.links);
+      } catch (err) {
+        console.error("Error al cargar links.json:", err);
+        document.getElementById("links-container").innerHTML =
+          `<div class="error-msg">No se pudieron cargar los enlaces. Inténtalo más tarde.</div>`;
+        document.getElementById("data-source").textContent = "Error al cargar datos";
+        document.getElementById("data-source").style.color = "var(--danger)";
+      }
+    }
 
-        // Función para crear partículas flotantes
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 20;
+    function renderProfile(profile) {
+      document.getElementById("profile-name").textContent = profile.name;
+      document.getElementById("profile-desc").textContent = profile.description;
 
-            for (let i = 0; i <particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
+      const avatar = document.getElementById("profile-avatar");
+      if (profile.emoji && profile.emoji.startsWith("/")) {
+        const img = document.createElement("img");
+        img.src = basePath + profile.emoji;
+        img.alt = profile.name;
+        avatar.innerHTML = "";
+        avatar.appendChild(img);
+      } else {
+        avatar.textContent = profile.emoji || "👤";
+      }
+    }
 
-        // Inicializar la página
-        document.addEventListener('DOMContentLoaded', function () {
-            loadLinks();
-            createParticles();
-        });
-
-        // Agregar efecto de click con ondas
-        document.addEventListener('click', function (e) {
-            if (e.target.closest('.link-card')) {
-                const ripple = document.createElement('div');
-                const card = e.target.closest('.link-card');
-                const rect = card.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                    z-index: 1;
-                `;
-
-                card.style.position = 'relative';
-                card.appendChild(ripple);
-
-                setTimeout(() => ripple.remove(), 600);
-            }
-        });
-
-        // CSS para el efecto ripple
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
+    function renderLinks(links) {
+      const container = document.getElementById("links-container");
+      container.innerHTML = "";
+      links.forEach((link, i) => {
+        const a = document.createElement("a");
+        a.className = "link-card";
+        a.href = link.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.style.animationDelay = `${i * 0.08}s`;
+        a.innerHTML = `
+          <div class="link-emoji">${link.emoji}</div>
+          <div class="link-content">
+            <div class="link-title">${link.title}</div>
+            ${link.description ? `<div class="link-desc">${link.description}</div>` : ""}
+          </div>
+          <div class="link-arrow">→</div>
         `;
-        document.head.appendChild(style);
-    </script>
+        container.appendChild(a);
+      });
+    }
+
+    function createParticles() {
+      const container = document.getElementById("particles");
+      const colors = ["#D4AF37", "#8A2BE2", "rgba(255,255,255,0.6)"];
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.top  = Math.random() * 100 + "%";
+        p.style.background = colors[i % colors.length];
+        p.style.setProperty("--delay", Math.random() * 6 + "s");
+        p.style.setProperty("--dur",   (3 + Math.random() * 3) + "s");
+        container.appendChild(p);
+      }
+    }
+
+    /* Ripple click effect */
+    document.addEventListener("click", (e) => {
+      const card = e.target.closest(".link-card");
+      if (!card) return;
+      const ripple = document.createElement("div");
+      const rect = card.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      Object.assign(ripple.style, {
+        position: "absolute",
+        width:  size + "px",
+        height: size + "px",
+        left:   (e.clientX - rect.left - size / 2) + "px",
+        top:    (e.clientY - rect.top  - size / 2) + "px",
+        background: "radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)",
+        borderRadius: "50%",
+        transform: "scale(0)",
+        animation: "ripple 0.6s ease-out",
+        pointerEvents: "none",
+        zIndex: "1",
+      });
+      card.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      init();
+      createParticles();
+    });
+  </script>
 </body>
 
 </html>
