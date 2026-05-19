@@ -13,13 +13,6 @@
   ],
   "links": [
     {
-      "emoji": "💼",
-      "title": "LinkedIn",
-      "description": "Conecta conmigo",
-      "url": "https://linkedin.com/in/caldeiro-luism",
-      "category": "social"
-    },
-    {
       "emoji": "🌐",
       "title": "Mi sitio web",
       "description": "Mi CV, habilidades y trayectoria",
@@ -27,11 +20,26 @@
       "category": "trabajo"
     },
     {
+      "emoji": "💼",
+      "title": "LinkedIn",
+      "description": "Conecta conmigo",
+      "url": "https://linkedin.com/in/caldeiro-luism",
+      "category": "social"
+    },
+    {
       "emoji": "📧",
       "title": "Email",
       "description": "Envíame un mensaje",
       "url": "mailto:caldeiro@protonmail.com",
       "category": "contacto"
+    },
+    {
+      "emoji": "📈",
+      "title": "Ultimate portfolio tracker",
+      "description": "Seguimiento de tu cartera cripto",
+      "url": "https://caldeix.github.io/-crypto_portfolio/",
+      "category": "apps",
+      "github": "https://github.com/caldeix/-crypto_portfolio"
     },
     {
       "emoji": "💻",
@@ -55,14 +63,6 @@
       "url": "https://caldeix.github.io/idle_habits/",
       "category": "apps",
       "github": "https://github.com/caldeix/idle_habits"
-    },
-    {
-      "emoji": "📈",
-      "title": "Crypto Portfolio",
-      "description": "Seguimiento de tu cartera cripto",
-      "url": "https://caldeix.github.io/-crypto_portfolio/",
-      "category": "apps",
-      "github": "https://github.com/caldeix/-crypto_portfolio"
     },
     {
       "emoji": "🖼️",
