@@ -2,7 +2,7 @@
   "profile": {
     "name": "Luis Miguel Caldeiro Fernandez",
     "description": "Desarrollador, apasionado por la tecnología",
-    "emoji": "/profile-pic.jpg"
+    "emoji": "/profile-pic.png"
   },
   "categories": [
     { "id": "todos",    "name": "Todos",    "emoji": "🌟" },
