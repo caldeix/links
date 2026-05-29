@@ -6,14 +6,12 @@ export const metadata: Metadata = {
   description: "Desarrollador apasionado por la tecnología — enlaces y proyectos.",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-      { url: "/android-chrome-192x192.png", type: "image/png", sizes: "192x192" },
-      { url: "/android-chrome-512x512.png", type: "image/png", sizes: "512x512" },
+      { url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico` },
+      { url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon-32x32.png`, type: "image/png", sizes: "32x32" },
+      { url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon-16x16.png`, type: "image/png", sizes: "16x16" },
     ],
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon.ico",
+    apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/apple-touch-icon.png`,
+    shortcut: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico`,
   },
 }
 

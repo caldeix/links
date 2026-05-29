@@ -1,6 +1,10 @@
 import type { ProfileSectionProps } from "@/types"
 import Image from "next/image"
 
+// next/image con unoptimized:true NO añade basePath al src automáticamente.
+// Lo añadimos manualmente usando NEXT_PUBLIC_BASE_PATH.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
 export function ProfileSection({ profile }: ProfileSectionProps) {
   const isImagePath = profile.emoji.startsWith("/")
 
@@ -16,7 +20,7 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
       >
         {isImagePath ? (
           <Image
-            src={profile.emoji}
+            src={`${BASE_PATH}${profile.emoji}`}
             alt={profile.name}
             width={96}
             height={96}
