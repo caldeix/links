@@ -17,36 +17,44 @@
       "title": "Mi sitio web",
       "description": "Mi CV, habilidades y trayectoria",
       "url": "https://caldeix.github.io/me",
-      "category": "trabajo"
+      "category": "trabajo",
+      "favorite": true,
+      "order": 1
     },
     {
       "emoji": "💼",
       "title": "LinkedIn",
       "description": "Conecta conmigo",
       "url": "https://linkedin.com/in/caldeiro-luism",
-      "category": "social"
+      "category": "social",
+      "favorite": true,
+      "order": 2
     },
     {
       "emoji": "📧",
       "title": "Email",
       "description": "Envíame un mensaje",
       "url": "mailto:caldeiro@protonmail.com",
-      "category": "contacto"
+      "category": "contacto",
+      "favorite": false
     },
     {
       "emoji": "📈",
-      "title": "Ultimate portfolio tracker",
+      "title": "crypto-portfolio-tracker",
       "description": "Seguimiento de tu cartera cripto",
       "url": "https://caldeix.github.io/-crypto_portfolio/",
       "category": "apps",
-      "github": "https://github.com/caldeix/-crypto_portfolio"
+      "github": "https://github.com/caldeix/-crypto_portfolio",
+      "favorite": true,
+      "order":3
     },
     {
       "emoji": "💻",
       "title": "GitHub",
       "description": "Mis proyectos",
       "url": "https://github.com/caldeix",
-      "category": "trabajo"
+      "category": "trabajo",
+      "favorite": false
     },
     {
       "emoji": "💰",
@@ -54,7 +62,8 @@
       "description": "Gestión de finanzas en pareja ❤️",
       "url": "https://caldeix.github.io/2budget",
       "category": "apps",
-      "github": "https://github.com/caldeix/2budget"
+      "github": "https://github.com/caldeix/2budget",
+      "favorite": false
     },
     {
       "emoji": "🎮",
@@ -62,15 +71,27 @@
       "description": "Gamifica tus hábitos diarios",
       "url": "https://caldeix.github.io/idle_habits/",
       "category": "apps",
-      "github": "https://github.com/caldeix/idle_habits"
+      "github": "https://github.com/caldeix/idle_habits",
+      "favorite": false
     },
     {
       "emoji": "🖼️",
       "title": "Ambient Wall",
-      "description": "Wallpapers dinámicos de ambiente",
+      "description": "Abient wall financiero en RASPBERRYPI",
       "url": "https://github.com/caldeix/AMBIENT-WALL",
       "category": "apps",
-      "github": "https://github.com/caldeix/AMBIENT-WALL"
+      "github": "https://github.com/caldeix/AMBIENT-WALL",
+      "favorite": false
+    },
+    {
+      "emoji": "🗣️➡️🧾",
+      "title": "simple-speech2-text-translator",
+      "description": "Transcripción y transcreación simple de voz a texto",
+      "url": "https://github.com/caldeix/simple-speech2-text-translator",
+      "category": "apps",
+      "github": "https://github.com/caldeix/simple-speech2-text-translator",
+      "favorite": true,
+      "order":3
     }
   ]
 }

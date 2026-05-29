@@ -5,6 +5,8 @@ export interface Link {
   url: string
   category: string
   github?: string
+  favorite?: boolean
+  order?: number
 }
 
 export interface Category {

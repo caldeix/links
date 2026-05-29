@@ -1,4 +1,4 @@
-import { Github } from "lucide-react"
+import { Github, Star } from "lucide-react"
 import type { LinkCardProps } from "@/types"
 
 export function LinkCard({ link, index }: LinkCardProps) {
@@ -10,7 +10,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div
-        className="rounded-2xl overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5"
+        className="relative rounded-2xl overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5"
         style={{
           background: "var(--app-card)",
           border:     "1px solid var(--app-border)",
@@ -27,6 +27,13 @@ export function LinkCard({ link, index }: LinkCardProps) {
           el.style.boxShadow   = "var(--app-shadow)"
         }}
       >
+        {/* ── Favorite star ─────────────────────────────────────── */}
+        {link.favorite && (
+          <div className="absolute top-2 left-2 z-10 pointer-events-none">
+            <Star className="w-3.5 h-3.5" style={{ fill: "var(--app-gold)", color: "var(--app-gold)" }} />
+          </div>
+        )}
+
         {/* ── App link ──────────────────────────────────────────── */}
         <a
           href={link.url}
