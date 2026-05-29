@@ -1,17 +1,17 @@
 /** @type {import('next').NextConfig} */
+const basePath = process.env.NODE_ENV === 'production' ? '/links' : ''
+
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/links' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/links/' : '',
-  eslint: {
-    ignoreDuringBuilds: true,
+  basePath,
+  assetPrefix: basePath ? basePath : '',
+  env: {
+    // Exposed to client components for manual basePath usage (e.g. Image src)
+    NEXT_PUBLIC_BASE_PATH: basePath,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  }
-};
+  eslint:     { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  images:     { unoptimized: true },
+}
 
-export default nextConfig;
+export default nextConfig
