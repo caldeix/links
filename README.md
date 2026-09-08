@@ -1,6 +1,6 @@
 # Links · Caldeix
 
-![Version](https://img.shields.io/badge/Versión-1.5.0-D4AF37?style=flat-square)
+![Version](https://img.shields.io/badge/Versión-1.5.1-D4AF37?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)

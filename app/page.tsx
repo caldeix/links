@@ -39,7 +39,7 @@ export default function LinkTree() {
         isAllCategories={isAllCategories}
       />
       <LinksGrid links={filteredLinks} />
-      <Footer usingFallback={usingFallback} />
+      <Footer />
     </MainContainer>
   )
 }

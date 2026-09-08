@@ -50,7 +50,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
             <h3 className="font-semibold text-brand-text group-hover:text-brand-gold transition-colors">
               {link.title}
             </h3>
-            <p className="text-sm text-brand-muted truncate">{link.description}</p>
+            <p className="text-sm text-brand-muted break-words">{link.description}</p>
           </div>
 
           <div className="text-brand-gold group-hover:translate-x-1 transition-transform flex-shrink-0">

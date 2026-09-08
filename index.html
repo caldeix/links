@@ -203,9 +203,7 @@
     .link-desc {
       font-size: 0.8rem;
       color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      overflow-wrap: break-word;
       margin-top: 0.15rem;
     }
 
@@ -284,11 +282,9 @@
     <div id="links-container"></div>
 
     <footer class="footer">
-      <span>Desarrollado por <a href="https://caldeix.github.io/links/" target="_blank" rel="noopener noreferrer">Caldeix</a></span>
+      <span>Desarrollado por <a href="https://linkedin.com/in/caldeiro-luism" target="_blank" rel="noopener noreferrer">Caldeix</a></span>
       <span class="footer-dot">•</span>
       <span>© <span id="year"></span> Copyright</span>
-      <span class="footer-dot">•</span>
-      <span id="data-source" style="color: var(--text-dim)">Cargado desde JSON</span>
     </footer>
   </div>
 
@@ -308,8 +304,6 @@
         console.error("Error al cargar links.json:", err);
         document.getElementById("links-container").innerHTML =
           `<div class="error-msg">No se pudieron cargar los enlaces. Inténtalo más tarde.</div>`;
-        document.getElementById("data-source").textContent = "Error al cargar datos";
-        document.getElementById("data-source").style.color = "var(--danger)";
       }
     }
 
