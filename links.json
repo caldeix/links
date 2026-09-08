@@ -5,11 +5,9 @@
     "emoji": "/profile-pic.jpg"
   },
   "categories": [
-    { "id": "todos",    "name": "Todos",    "emoji": "🌟" },
-    { "id": "social",   "name": "Social",   "emoji": "🌐" },
-    { "id": "trabajo",  "name": "Trabajo",  "emoji": "💼" },
-    { "id": "contacto", "name": "Contacto", "emoji": "📞" },
-    { "id": "apps",     "name": "Apps",     "emoji": "📱" }
+    { "id": "todos",  "name": "Todos",    "emoji": "🌟" },
+    { "id": "perfil", "name": "Sobre mí", "emoji": "👤" },
+    { "id": "apps",   "name": "Apps",     "emoji": "📱" }
   ],
   "links": [
     {
@@ -17,7 +15,7 @@
       "title": "Mi sitio web",
       "description": "Mi CV, habilidades y trayectoria",
       "url": "https://caldeix.github.io/me",
-      "category": "trabajo",
+      "category": "perfil",
       "favorite": true,
       "order": 1
     },
@@ -26,7 +24,7 @@
       "title": "LinkedIn",
       "description": "Conecta conmigo",
       "url": "https://linkedin.com/in/caldeiro-luism",
-      "category": "social",
+      "category": "perfil",
       "favorite": true,
       "order": 2
     },
@@ -35,7 +33,15 @@
       "title": "Email",
       "description": "Envíame un mensaje",
       "url": "mailto:caldeiro@protonmail.com",
-      "category": "contacto",
+      "category": "perfil",
+      "favorite": false
+    },
+    {
+      "emoji": "💻",
+      "title": "GitHub",
+      "description": "Mis proyectos",
+      "url": "https://github.com/caldeix",
+      "category": "perfil",
       "favorite": false
     },
     {
@@ -46,15 +52,17 @@
       "category": "apps",
       "github": "https://github.com/caldeix/-crypto_portfolio",
       "favorite": true,
-      "order":3
+      "order": 3
     },
     {
-      "emoji": "💻",
-      "title": "GitHub",
-      "description": "Mis proyectos",
-      "url": "https://github.com/caldeix",
-      "category": "trabajo",
-      "favorite": false
+      "emoji": "🗣️➡️🧾",
+      "title": "simple-speech2-text-translator",
+      "description": "Transcripción y transcreación simple de voz a texto",
+      "url": "https://caldeix.github.io/simple-speech2-text-translator",
+      "category": "apps",
+      "github": "https://github.com/caldeix/simple-speech2-text-translator",
+      "favorite": true,
+      "order": 4
     },
     {
       "emoji": "💰",
@@ -63,6 +71,16 @@
       "url": "https://caldeix.github.io/2budget",
       "category": "apps",
       "github": "https://github.com/caldeix/2budget",
+      "favorite": true,
+      "order": 5
+    },
+    {
+      "emoji": "🕰️",
+      "title": "TimeGold",
+      "description": "Planificador semanal de time-blocking sobre las 168 horas",
+      "url": "https://caldeix.github.io/timegold/",
+      "category": "apps",
+      "github": "https://github.com/caldeix/timegold",
       "favorite": false
     },
     {
@@ -82,16 +100,6 @@
       "category": "apps",
       "github": "https://github.com/caldeix/AMBIENT-WALL",
       "favorite": false
-    },
-    {
-      "emoji": "🗣️➡️🧾",
-      "title": "simple-speech2-text-translator",
-      "description": "Transcripción y transcreación simple de voz a texto",
-      "url": "https://caldeix.github.io/simple-speech2-text-translator",
-      "category": "apps",
-      "github": "https://github.com/caldeix/simple-speech2-text-translator",
-      "favorite": true,
-      "order":3
     }
   ]
 }
