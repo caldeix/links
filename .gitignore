@@ -30,3 +30,6 @@ next-env.d.ts
 
 # generated at build time (scripts/fetch-favicons.mjs)
 /public/favicons/
+
+# Claude Code (config local del panel de preview)
+/.claude/

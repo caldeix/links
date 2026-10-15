@@ -2,22 +2,24 @@
 
 ![Version](https://img.shields.io/badge/Versión-1.6.0-D4AF37?style=flat-square)
 ![Copyright](https://img.shields.io/badge/©_2026-Caldeix-D4AF37?style=flat-square)
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/caldeix/links/deploy.yml?branch=master&label=Deploy&style=flat-square&logo=github)](https://github.com/caldeix/links/actions/workflows/deploy.yml)
 ![License](https://img.shields.io/badge/Licencia-MIT-green?style=flat-square)
 
-Agregador de enlaces personales estilo Linktree, publicado en **https://caldeix.github.io/links**. Los datos se cargan desde un único JSON — sin tocar código para añadir o editar enlaces.
+Agregador de enlaces personales estilo Linktree, publicado en **https://caldeix.github.io/links**. Todo sale de un único JSON — sin tocar código para añadir o editar enlaces.
 
 ## Features
 
-- **GitHub strip en apps** — las tarjetas con campo `github` incluyen un footer con enlace directo al repositorio
+- **HTML estático con los datos dentro** — `links.json` se lee al compilar, así que la página publicada ya contiene todos los enlaces (sin spinner ni `fetch`). Si el JSON es inválido, el build falla y no se despliega
+- **SEO + GEO** — JSON-LD (`ProfilePage` + `Person` + proyectos), Open Graph, [`/links/llms.txt`](https://caldeix.github.io/links/llms.txt) y [`/links/sitemap.xml`](https://caldeix.github.io/links/sitemap.xml), todo generado desde `links.json`
+- **GitHub strip en apps** — las tarjetas con campo `github` incluyen un footer con enlace al repositorio (se omite si `github` y `url` son la misma dirección)
 - **Favoritos y orden** — `favorite` marca la tarjeta con una estrella dorada y la sube arriba; `order` ordena los favoritos
 - **Favicon automático** — si un enlace no tiene `emoji`, se muestra el favicon de la web enlazada (se obtiene al compilar)
 - **Filtrado por categoría** — pestañas interactivas con animación gold/violet
+- **Accesible** — navegación por teclado con foco visible, `aria-pressed` en pestañas, landmarks y respeto a `prefers-reduced-motion`
 - **Diseño dark premium** — paleta `#090A0F` + acentos dorados y violeta, partículas flotantes y shimmer en hover
-- **Fallback automático** — si `links.json` falla, muestra datos de ejemplo con aviso visual
 - **Responsive** — mobile-first, funciona en cualquier pantalla
 - **Deploy automático** — cada merge a `master` compila y publica en GitHub Pages
 
@@ -30,7 +32,10 @@ Edita `public/links.json` — sin tocar código:
   "profile": {
     "name": "Tu Nombre",
     "description": "Tu descripción",
-    "emoji": "/profile-pic.jpg"
+    "emoji": "/profile-pic.jpg",
+    "jobTitle": "Full Stack Developer",
+    "alternateName": ["Tu alias"],
+    "knowsAbout": ["TypeScript", "Python"]
   },
   "categories": [
     { "id": "todos",  "name": "Todos",    "emoji": "🌟" },
@@ -72,7 +77,22 @@ Edita `public/links.json` — sin tocar código:
 | `favorite`    |   | `true` para mostrar la estrella dorada |
 | `order`       |   | Posición entre los favoritos (menor = antes); los favoritos van siempre primero |
 
-`profile.emoji` admite un emoji o la ruta de una imagen de `public/` (p. ej. `/profile-pic.jpg`).
+### Campos del perfil
+
+| Campo           | Obligatorio | Descripción |
+|-----------------|:-----------:|-------------|
+| `name`          | ✔ | Nombre visible (y `name` del JSON-LD) |
+| `description`   | ✔ | Frase bajo el nombre |
+| `emoji`         | ✔ | Un emoji o la ruta de una imagen de `public/` (p. ej. `/profile-pic.jpg`) |
+| `jobTitle`      |   | Rol profesional (metadatos y JSON-LD) |
+| `alternateName` |   | Otros nombres con los que te buscan (JSON-LD) |
+| `knowsAbout`    |   | Especialidades (JSON-LD, keywords y `llms.txt`) |
+
+Los enlaces de la categoría `perfil` con URL `https://` se publican en el JSON-LD como `sameAs` (tus otros perfiles), y los de `apps` como proyectos.
+
+### Verificación en buscadores (opcional)
+
+Crea en GitHub las variables de Actions `GOOGLE_SITE_VERIFICATION` y/o `BING_SITE_VERIFICATION` (Settings → Secrets and variables → Actions → Variables) con el código que dan Google Search Console / Bing Webmaster. El siguiente deploy añade la meta etiqueta; después envía `https://caldeix.github.io/links/sitemap.xml`.
 
 ## Instalación
 
@@ -90,25 +110,26 @@ npm run dev        # http://localhost:3000
 | `npm run dev`       | Servidor de desarrollo (antes descarga los favicons que falten) |
 | `npm run build`     | Export estático en `out/` (antes descarga los favicons) |
 | `npm run favicons`  | Descarga los favicons de los enlaces sin emoji a `public/favicons/` |
-| `npm run lint`      | ESLint (`next lint`) |
+| `npm run lint`      | ESLint (`eslint .`, config de Next 16) |
 | `npm run typecheck` | Comprobación de tipos con `tsc --noEmit` |
 
 ## Estructura del proyecto
 
 ```
-app/                  layout (metadatos) y página principal
+app/                  layout (metadatos), página, llms.txt y sitemap.xml (todo estático)
 components/
   categories/         pestañas de categorías
   layout/             contenedor y footer
-  links/              tarjeta, icono, contador y grid de enlaces
+  links/              explorador (cliente), tarjeta, icono, contador y grid
   profile/            cabecera con foto, nombre y descripción
-  ui/                 spinner, aviso de fallback y partículas
-constants/            datos de fallback y constantes
-hooks/                carga de datos y filtrado por categoría
+  ui/                 partículas de fondo
+constants/            constantes
+hooks/                filtrado y orden por categoría
+lib/                  lectura/validación de links.json, JSON-LD y URLs del sitio
 scripts/              fetch-favicons.mjs (se ejecuta en build/dev)
 types/                tipos de LinksData
 public/               links.json, foto de perfil, iconos y manifest
-.github/workflows/    deploy.yml (GitHub Pages)
+.github/              deploy.yml (GitHub Pages) y dependabot.yml
 ```
 
 ## Deploy

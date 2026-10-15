@@ -10,8 +10,7 @@
     "predev": "node scripts/fetch-favicons.mjs --reuse",
     "dev": "next dev",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "start": "next start"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "lucide-react": "^0.454.0",
