@@ -1,45 +1,31 @@
-"use client"
-
-import { useState } from "react"
-import { useLinksData } from "@/hooks/use-links-data"
-import { useFilteredLinks } from "@/hooks/use-filtered-links"
-import { LoadingSpinner } from "@/components/ui/loading-spinner"
+import { getLinksData } from "@/lib/links-data"
+import { buildStructuredData } from "@/lib/structured-data"
 import { ParticleBackground } from "@/components/ui/particle-background"
-import { FallbackNotice } from "@/components/ui/fallback-notice"
 import { MainContainer } from "@/components/layout/main-container"
 import { ProfileSection } from "@/components/profile/profile-section"
-import { CategoryTabs } from "@/components/categories/category-tabs"
-import { LinkCounter } from "@/components/links/link-counter"
-import { LinksGrid } from "@/components/links/links-grid"
+import { LinksExplorer } from "@/components/links/links-explorer"
 import { Footer } from "@/components/layout/footer"
 
-export default function LinkTree() {
-  const [activeCategory, setActiveCategory] = useState("todos")
-  const { data, loading, usingFallback } = useLinksData()
-  const filteredLinks = useFilteredLinks({ links: data.links, activeCategory })
-
-  if (loading) return <LoadingSpinner />
-
-  const activeCategoryName = data.categories.find((cat) => cat.id === activeCategory)?.name
-  const isAllCategories = activeCategory === "todos"
+// Server component: se renderiza en build con los datos de public/links.json ya dentro del HTML
+export default async function LinkTree() {
+  const data = await getLinksData()
+  const structuredData = buildStructuredData(data)
 
   return (
-    <MainContainer>
-      <ParticleBackground />
-      <FallbackNotice isVisible={usingFallback} />
-      <ProfileSection profile={data.profile} />
-      <CategoryTabs
-        categories={data.categories}
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
+    <>
+      <script
+        type="application/ld+json"
+        // JSON.stringify no escapa "<": se evita que un texto con "</script>" cierre la etiqueta
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
-      <LinkCounter
-        count={filteredLinks.length}
-        categoryName={activeCategoryName}
-        isAllCategories={isAllCategories}
-      />
-      <LinksGrid links={filteredLinks} />
-      <Footer />
-    </MainContainer>
+      <MainContainer>
+        <ParticleBackground />
+        <main className="relative z-10">
+          <ProfileSection profile={data.profile} />
+          <LinksExplorer categories={data.categories} links={data.links} />
+        </main>
+        <Footer />
+      </MainContainer>
+    </>
   )
 }

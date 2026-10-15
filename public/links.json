@@ -2,7 +2,10 @@
   "profile": {
     "name": "Luis Miguel Caldeiro Fernandez",
     "description": "Desarrollador, apasionado por la tecnología",
-    "emoji": "/profile-pic.jpg"
+    "emoji": "/profile-pic.jpg",
+    "jobTitle": "Full Stack Developer & AI Engineer",
+    "alternateName": ["Caldeix", "Luis Miguel Caldeiro"],
+    "knowsAbout": ["PHP", "REST APIs", "Vue.js", "Python", "LLMs", "Next.js"]
   },
   "categories": [
     { "id": "todos",  "name": "Todos",    "emoji": "🌟" },
@@ -77,7 +80,7 @@
     {
       "emoji": "🖼️",
       "title": "Ambient Wall",
-      "description": "Abient wall financiero en RASPBERRYPI",
+      "description": "Ambient wall financiero en Raspberry Pi",
       "url": "https://github.com/caldeix/AMBIENT-WALL",
       "category": "apps",
       "github": "https://github.com/caldeix/AMBIENT-WALL",

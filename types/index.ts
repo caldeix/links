@@ -24,7 +24,14 @@ export interface Category {
 export interface Profile {
   name: string
   description: string
+  /** Emoji o ruta de una imagen de public/ (p. ej. "/profile-pic.jpg") */
   emoji: string
+  /** SEO/GEO: rol profesional (JSON-LD jobTitle) */
+  jobTitle?: string
+  /** SEO/GEO: otros nombres con los que te buscan (JSON-LD alternateName) */
+  alternateName?: string[]
+  /** SEO/GEO: temas de especialidad (JSON-LD knowsAbout) */
+  knowsAbout?: string[]
 }
 
 export interface LinksData {
@@ -56,8 +63,4 @@ export interface LinkCounterProps {
   count: number
   categoryName?: string
   isAllCategories: boolean
-}
-
-export interface FallbackNoticeProps {
-  isVisible: boolean
 }

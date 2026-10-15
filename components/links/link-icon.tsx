@@ -16,7 +16,7 @@ export function LinkIcon({ link }: LinkIconProps) {
   const emoji = link.emoji?.trim()
 
   if (emoji) {
-    return <div className="text-2xl flex-shrink-0">{emoji}</div>
+    return <div className="text-2xl flex-shrink-0" aria-hidden="true">{emoji}</div>
   }
 
   return (

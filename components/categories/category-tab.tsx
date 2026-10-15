@@ -11,8 +11,10 @@ interface CategoryTabProps {
 export function CategoryTab({ category, isActive, onClick }: CategoryTabProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
-      className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2"
+      aria-pressed={isActive}
+      className="focus-ring px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2"
       style={
         isActive
           ? {
@@ -27,7 +29,7 @@ export function CategoryTab({ category, isActive, onClick }: CategoryTabProps) {
             }
       }
     >
-      <span>{category.emoji}</span>
+      <span aria-hidden="true">{category.emoji}</span>
       <span>{category.name}</span>
     </button>
   )

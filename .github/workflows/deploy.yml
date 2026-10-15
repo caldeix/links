@@ -37,6 +37,10 @@ jobs:
       # prebuild descarga los favicons de los enlaces sin emoji (scripts/fetch-favicons.mjs)
       - name: Build (export estático en out/)
         run: npm run build
+        env:
+          # Opcionales: Settings → Secrets and variables → Actions → Variables
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -5,7 +5,7 @@ import { CategoryTab } from "./category-tab"
 
 export function CategoryTabs({ categories, activeCategory, onCategoryChange }: CategoryTabsProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-2 mb-8">
+    <nav aria-label="Categorías" className="flex flex-wrap justify-center gap-2 mb-8">
       {categories.map((category) => (
         <CategoryTab
           key={category.id}
@@ -14,6 +14,6 @@ export function CategoryTabs({ categories, activeCategory, onCategoryChange }: C
           onClick={() => onCategoryChange(category.id)}
         />
       ))}
-    </div>
+    </nav>
   )
 }
