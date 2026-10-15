@@ -64,7 +64,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
             href={link.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 text-xs text-brand-dim
+            className="flex items-center gap-2 px-4 py-2 text-xs text-brand-muted
                        hover:text-brand-violet hover:bg-brand-violet-dim
                        transition-all duration-200"
             style={{ borderTop: "1px solid var(--app-border)" }}

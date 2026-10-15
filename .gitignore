@@ -25,3 +25,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# tooling
+/.codegraph/
+
+# generated at build time (scripts/fetch-favicons.mjs)
+/public/favicons/

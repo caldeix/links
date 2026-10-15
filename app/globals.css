@@ -31,33 +31,6 @@
   --app-glow-gold: 0 0 16px rgba(212, 175, 55, 0.35);
   --app-glow-purple: 0 0 16px rgba(138, 43, 226, 0.35);
   --app-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-
-  /* shadcn/ui tokens (dark-first — app is always dark) */
-  --background: 232 41% 4%;
-  --foreground: 0 0% 100%;
-  --card: 231 38% 12%;
-  --card-foreground: 0 0% 100%;
-  --popover: 231 38% 12%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 43 63% 52%;
-  --primary-foreground: 0 0% 5%;
-  --secondary: 271 68% 56%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 231 25% 15%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 231 25% 15%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 231 25% 13%;
-  --input: 231 25% 13%;
-  --ring: 43 63% 52%;
-  --radius: 0.75rem;
-  --chart-1: 43 63% 52%;
-  --chart-2: 271 68% 56%;
-  --chart-3: 142 100% 50%;
-  --chart-4: 0 100% 60%;
-  --chart-5: 33 100% 63%;
 }
 
 /* ── Animations ────────────────────────────────────────────────────────── */
