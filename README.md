@@ -13,7 +13,7 @@ Agregador de enlaces personales estilo Linktree, publicado en **https://caldeix.
 ## Features
 
 - **GitHub strip en apps** — las tarjetas con campo `github` incluyen un footer con enlace directo al repositorio
-- **Favoritos y orden** — `favorite` marca la tarjeta con una estrella dorada; `order` fija su posición
+- **Favoritos y orden** — `favorite` marca la tarjeta con una estrella dorada y la sube arriba; `order` ordena los favoritos
 - **Favicon automático** — si un enlace no tiene `emoji`, se muestra el favicon de la web enlazada (se obtiene al compilar)
 - **Filtrado por categoría** — pestañas interactivas con animación gold/violet
 - **Diseño dark premium** — paleta `#090A0F` + acentos dorados y violeta, partículas flotantes y shimmer en hover
@@ -70,7 +70,7 @@ Edita `public/links.json` — sin tocar código:
 | `emoji`       |   | Icono de la tarjeta. Si se omite o se deja `""`, se usa el favicon de `url` |
 | `github`      |   | URL del repositorio; añade la franja "Ver repositorio en GitHub" |
 | `favorite`    |   | `true` para mostrar la estrella dorada |
-| `order`       |   | Posición en la lista (menor = antes) |
+| `order`       |   | Posición entre los favoritos (menor = antes); los favoritos van siempre primero |
 
 `profile.emoji` admite un emoji o la ruta de una imagen de `public/` (p. ej. `/profile-pic.jpg`).
 
