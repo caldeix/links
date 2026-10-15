@@ -6,11 +6,9 @@ const nextConfig = {
   basePath,
   assetPrefix: basePath ? basePath : '',
   env: {
-    // Exposed to client components for manual basePath usage (e.g. Image src)
+    // Exposed to client components for manual basePath usage (e.g. Image src, fetch)
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
-  eslint:     { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
   images:     { unoptimized: true },
 }
 
