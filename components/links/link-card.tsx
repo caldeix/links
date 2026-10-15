@@ -1,5 +1,6 @@
 import { Github, Star } from "lucide-react"
 import type { LinkCardProps } from "@/types"
+import { LinkIcon } from "./link-icon"
 
 export function LinkCard({ link, index }: LinkCardProps) {
   const hasGithub = Boolean(link.github)
@@ -44,7 +45,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
           {/* Shimmer */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(212,175,55,0.05)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
 
-          <div className="text-2xl flex-shrink-0">{link.emoji}</div>
+          <LinkIcon link={link} />
 
           <div className="flex-1 min-w-0">
             <h3 className="font-semibold text-brand-text group-hover:text-brand-gold transition-colors">

@@ -4,7 +4,10 @@
   "private": true,
   "homepage": "https://caldeix.github.io/links",
   "scripts": {
+    "favicons": "node scripts/fetch-favicons.mjs",
+    "prebuild": "node scripts/fetch-favicons.mjs",
     "build": "next build",
+    "predev": "node scripts/fetch-favicons.mjs --reuse",
     "dev": "next dev",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",

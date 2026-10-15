@@ -1,5 +1,6 @@
 export interface Link {
-  emoji: string
+  /** Si se omite o es "", se usa el favicon de `url` (generado en build) */
+  emoji?: string
   title: string
   description: string
   url: string
@@ -7,7 +8,12 @@ export interface Link {
   github?: string
   favorite?: boolean
   order?: number
+  /** Generado: ruta del favicon descargado por scripts/fetch-favicons.mjs */
+  favicon?: string
 }
+
+/** public/favicons/favicons.json → { [url]: "/favicons/<slug>.<ext>" } */
+export type FaviconMap = Record<string, string>
 
 export interface Category {
   id: string
