@@ -75,24 +75,6 @@
       "order": 5
     },
     {
-      "emoji": "🕰️",
-      "title": "TimeGold",
-      "description": "Planificador semanal de time-blocking sobre las 168 horas",
-      "url": "https://caldeix.github.io/timegold/",
-      "category": "apps",
-      "github": "https://github.com/caldeix/timegold",
-      "favorite": false
-    },
-    {
-      "emoji": "🎮",
-      "title": "Habits Idle",
-      "description": "Gamifica tus hábitos diarios",
-      "url": "https://caldeix.github.io/idle_habits/",
-      "category": "apps",
-      "github": "https://github.com/caldeix/idle_habits",
-      "favorite": false
-    },
-    {
       "emoji": "🖼️",
       "title": "Ambient Wall",
       "description": "Abient wall financiero en RASPBERRYPI",
