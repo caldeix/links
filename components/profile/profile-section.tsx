@@ -39,6 +39,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
       >
         {profile.name}
       </h1>
+      {profile.jobTitle && (
+        <p className="text-brand-text text-sm font-medium tracking-wide mb-1">{profile.jobTitle}</p>
+      )}
       <p className="text-brand-muted text-sm">{profile.description}</p>
     </div>
   )
