@@ -85,6 +85,17 @@
       "category": "apps",
       "github": "https://github.com/caldeix/AMBIENT-WALL",
       "favorite": false
-    }
+    },
+    {
+      "emoji": "",
+      "title": "Dana Radar",
+      "description": "Mapa interactivo con los avisos de la AEMET",
+      "url": "https://caldeix.github.io/dana-radar",
+      "category": "apps",
+      "github": "https://github.com/caldeix/dana-radar",
+      "favorite": false,
+      "order": 6
+    },
+
   ]
 }
