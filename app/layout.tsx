@@ -1,9 +1,14 @@
 import type { Metadata, Viewport } from "next"
+import { Cormorant, Roboto } from "next/font/google"
 import "./globals.css"
 import { getLinksData } from "@/lib/links-data"
 import { SITE_ORIGIN, SITE_TITLE, SITE_URL, absoluteUrl } from "@/lib/site"
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
+// Fuentes del DS Personal: Cormorant para títulos y Roboto para el texto
+const title = Cormorant({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-title", display: "swap" })
+const text = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-text", display: "swap" })
 
 // Códigos de verificación de Google Search Console / Bing Webmaster.
 // Se pasan como variables del repo en GitHub (Settings → Variables) y el workflow los inyecta en el build.
@@ -29,6 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: `${BASE}/site.webmanifest`,
     icons: {
       icon: [
+        { url: `${BASE}/favicon.svg`, type: "image/svg+xml" },
         { url: `${BASE}/favicon.ico` },
         { url: `${BASE}/favicon-32x32.png`, type: "image/png", sizes: "32x32" },
         { url: `${BASE}/favicon-16x16.png`, type: "image/png", sizes: "16x16" },
@@ -67,7 +73,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${title.variable} ${text.variable}`}>
       <body>{children}</body>
     </html>
   )

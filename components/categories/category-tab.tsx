@@ -14,20 +14,11 @@ export function CategoryTab({ category, isActive, onClick }: CategoryTabProps) {
       type="button"
       onClick={onClick}
       aria-pressed={isActive}
-      className="focus-ring px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2"
-      style={
+      className={`focus-ring px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
         isActive
-          ? {
-              background:  "linear-gradient(135deg, var(--app-gold), var(--app-violet))",
-              color:       "#fff",
-              boxShadow:   "var(--app-glow-gold)",
-            }
-          : {
-              background:  "var(--app-card)",
-              color:       "var(--app-muted)",
-              border:      "1px solid var(--app-border)",
-            }
-      }
+          ? "bg-brand-blue-strong text-white shadow-[var(--app-glow-blue)]"
+          : "bg-brand-card-hover text-white hover:bg-[rgb(75_85_99)]"
+      }`}
     >
       <span aria-hidden="true">{category.emoji}</span>
       <span>{category.name}</span>

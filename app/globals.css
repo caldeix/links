@@ -2,34 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Design tokens ─────────────────────────────────────────────────────── */
+/* ── Design tokens: DS Personal (https://claude.ai/artifact/KE9YMqqV3zGi7fXeDLcGnA) ──
+   Mismos grises y azules que el DS, en modo oscuro. El fondo es el propio de esta web. */
 :root {
-  /* Backgrounds */
+  /* Fondos (el de la página se mantiene) */
   --app-bg: #090A0F;
-  --app-surface: #0D0F1A;
-  --app-card: #16192B;
-  --app-card-hover: #1E2238;
-  --app-border: rgba(255, 255, 255, 0.06);
+  --app-surface: rgb(17 24 39);          /* gray-900 */
+  --app-card: rgb(31 41 55);             /* gray-800 */
+  --app-card-hover: rgb(55 65 81);       /* gray-700 */
+  --app-border: rgb(55 65 81);           /* gray-700 */
 
-  /* Accents */
-  --app-gold: #D4AF37;
-  --app-gold-dim: rgba(212, 175, 55, 0.15);
-  --app-violet: #8A2BE2;
-  --app-violet-dim: rgba(138, 43, 226, 0.15);
+  /* Acentos: azules del DS */
+  --app-blue: rgb(59 130 246);           /* blue-500 */
+  --app-blue-strong: rgb(37 99 235);     /* blue-600 */
+  --app-blue-dim: rgba(59, 130, 246, 0.15);
+  --app-gradient: radial-gradient(ellipse at center, rgb(59 130 246) 0%, rgb(37 99 235) 70%); /* bg-radial-blue */
 
-  /* Semantic */
-  --app-success: #00FF66;
-  --app-danger: #FF3333;
-  --app-warning: #FFA502;
+  /* Estados del DS */
+  --app-success: rgb(16 185 129);        /* emerald-500 */
+  --app-danger: rgb(255 127 80);         /* coral-500 */
+  --app-warning: rgb(225 173 1);         /* mustard-500 */
 
-  /* Text */
-  --app-text: #FFFFFF;
-  --app-muted: #A0AEC0;
-  --app-dim: #4A5568;
+  /* Texto */
+  --app-text: rgb(255 255 255);
+  --app-muted: rgb(156 163 175);         /* gray-400 */
+  --app-dim: rgb(107 114 128);           /* gray-500 */
 
-  /* Shadows / Glows */
-  --app-glow-gold: 0 0 16px rgba(212, 175, 55, 0.35);
-  --app-glow-purple: 0 0 16px rgba(138, 43, 226, 0.35);
+  /* Sombras y brillos */
+  --app-glow-blue: 0 0 16px rgba(59, 130, 246, 0.35);
   --app-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
@@ -55,14 +55,14 @@
 }
 .link-card:hover,
 .link-card:focus-within {
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: var(--app-glow-gold);
+  border-color: var(--app-blue);
+  box-shadow: var(--app-glow-blue);
 }
 
 /* ── Foco visible (solo teclado) ──────────────────────────────────────── */
 .focus-ring:focus-visible,
 .focus-ring-inset:focus-visible {
-  outline: 2px solid var(--app-gold);
+  outline: 2px solid var(--app-blue-strong);
   outline-offset: 2px;
 }
 .focus-ring-inset:focus-visible { outline-offset: -2px; }
@@ -82,17 +82,26 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: var(--font-text), "Roboto", "Segoe UI", system-ui, sans-serif;
   background-color: var(--app-bg);
   color: var(--app-text);
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+  /* Degradado de títulos del DS */
+  .bg-radial-blue { background-image: var(--app-gradient); }
 }
+
+/* ── Destellos azules del fondo ───────────────────────────────────────── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6); }
+  50%      { opacity: 0.9;  transform: scale(1); }
+}
+.sparkle { animation: twinkle ease-in-out infinite; }
 
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--app-surface); }
 ::-webkit-scrollbar-thumb { background: var(--app-card-hover); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.5); }
+::-webkit-scrollbar-thumb:hover { background: var(--app-blue); }

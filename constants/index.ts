@@ -1,1 +1,1 @@
-export const PARTICLE_COUNT = 20
+export const PARTICLE_COUNT = 28

@@ -14,11 +14,12 @@
   ],
   "links": [
     {
-      "emoji": "🌐",
+      "emoji": "",
       "title": "Mi sitio web",
       "description": "Mi CV, habilidades y trayectoria",
-      "url": "https://caldeix.github.io/me",
+      "url": "https://caldeix.github.io/",
       "category": "perfil",
+      "github": "https://github.com/caldeix/caldeix.github.io",
       "favorite": true,
       "order": 1
     },

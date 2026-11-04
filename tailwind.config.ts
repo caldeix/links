@@ -7,6 +7,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      /* Fuentes del DS Personal (next/font en app/layout.tsx) */
+      fontFamily: {
+        title: ["var(--font-title)", "Cormorant", "Garamond", "serif"],
+        text:  ["var(--font-text)", "Roboto", "Segoe UI", "system-ui", "sans-serif"],
+      },
       colors: {
         /* App design tokens — use as bg-brand-card, text-brand-muted, etc. */
         brand: {
@@ -14,10 +19,9 @@ const config: Config = {
           surface:     "var(--app-surface)",
           card:        "var(--app-card)",
           "card-hover":"var(--app-card-hover)",
-          gold:        "var(--app-gold)",
-          "gold-dim":  "var(--app-gold-dim)",
-          violet:      "var(--app-violet)",
-          "violet-dim":"var(--app-violet-dim)",
+          blue:        "var(--app-blue)",
+          "blue-strong":"var(--app-blue-strong)",
+          "blue-dim":  "var(--app-blue-dim)",
           text:        "var(--app-text)",
           muted:       "var(--app-muted)",
           dim:         "var(--app-dim)",

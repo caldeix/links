@@ -13,9 +13,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
       <div
         className="w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, var(--app-gold), var(--app-violet))",
+          background: "var(--app-gradient)",
           padding: "2px",
-          boxShadow: "var(--app-glow-gold)",
+          boxShadow: "var(--app-glow-blue)",
         }}
       >
         {isImagePath ? (
@@ -33,10 +33,7 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
         )}
       </div>
 
-      <h1
-        className="text-2xl font-bold mb-2 bg-clip-text text-transparent"
-        style={{ backgroundImage: "linear-gradient(90deg, var(--app-gold), var(--app-violet))" }}
-      >
+      <h1 className="font-title text-4xl leading-tight font-semibold mb-2 bg-radial-blue bg-clip-text text-transparent text-balance">
         {profile.name}
       </h1>
       {profile.jobTitle && (

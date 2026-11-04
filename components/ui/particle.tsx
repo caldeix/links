@@ -6,18 +6,25 @@ function seeded(seed: number): number {
   return x - Math.floor(x)
 }
 
-const COLORS = ["var(--app-gold)", "var(--app-violet)", "rgba(255,255,255,0.6)"]
+// Azules del DS (blue-500, blue-600) y un azul muy claro para los destellos más brillantes
+const COLORS = ["rgb(59 130 246)", "rgb(37 99 235)", "rgb(191 219 254)"]
 
 export function Particle({ index }: ParticleProps) {
+  const color = COLORS[index % COLORS.length]
+  const size = 2 + Math.round(seeded(index * 4.9) * 2) // 2–4 px
+
   return (
     <div
-      className="absolute w-1 h-1 rounded-full opacity-30 animate-pulse"
+      className="sparkle absolute rounded-full"
       style={{
         left:              `${seeded(index * 3.1) * 100}%`,
         top:               `${seeded(index * 7.3) * 100}%`,
-        animationDelay:    `${seeded(index * 5.2) * 3}s`,
-        animationDuration: `${2 + seeded(index * 2.7) * 2}s`,
-        background:        COLORS[index % COLORS.length],
+        width:             size,
+        height:            size,
+        animationDelay:    `${seeded(index * 5.2) * 4}s`,
+        animationDuration: `${3 + seeded(index * 2.7) * 3}s`,
+        background:        color,
+        boxShadow:         `0 0 ${size * 3}px ${size}px ${color}`,
       }}
     />
   )

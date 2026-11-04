@@ -21,7 +21,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
           <div className="absolute top-2 left-2 z-10 pointer-events-none">
             <Star
               className="w-3.5 h-3.5"
-              style={{ fill: "var(--app-gold)", color: "var(--app-gold)" }}
+              style={{ fill: "var(--app-warning)", color: "var(--app-warning)" }}
               aria-label="Favorito"
               role="img"
             />
@@ -36,19 +36,19 @@ export function LinkCard({ link, index }: LinkCardProps) {
           className="focus-ring-inset relative flex items-center gap-4 p-4 transition-colors duration-200 hover:bg-brand-card-hover"
         >
           {/* Shimmer */}
-          <div className="shimmer absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(212,175,55,0.05)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
+          <div className="shimmer absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(59,130,246,0.08)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
 
           <LinkIcon link={link} />
 
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-brand-text group-hover:text-brand-gold transition-colors">
+            <h3 className="font-bold text-brand-text group-hover:text-brand-blue transition-colors">
               {link.title}
             </h3>
             <p className="text-sm text-brand-muted break-words">{link.description}</p>
             {NEW_TAB}
           </div>
 
-          <div className="text-brand-gold group-hover:translate-x-1 transition-transform flex-shrink-0" aria-hidden="true">
+          <div className="text-brand-blue group-hover:translate-x-1 transition-transform flex-shrink-0" aria-hidden="true">
             →
           </div>
         </a>
@@ -60,12 +60,12 @@ export function LinkCard({ link, index }: LinkCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="focus-ring-inset flex items-center gap-2 px-4 py-2 text-xs text-brand-muted
-                       hover:text-brand-violet hover:bg-brand-violet-dim
+                       hover:text-white hover:bg-brand-card-hover
                        transition-all duration-200"
             style={{ borderTop: "1px solid var(--app-border)" }}
           >
             <Github className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
-            <span className="font-mono tracking-wide">
+            <span className="font-medium tracking-wide">
               Ver repositorio en GitHub<span className="sr-only"> de {link.title}</span>
             </span>
             {NEW_TAB}
