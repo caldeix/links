@@ -1,5 +1,5 @@
 import { getLinksData } from "@/lib/links-data"
-import { SITE_URL, isHttpUrl, sameUrl } from "@/lib/site"
+import { PORTFOLIO_URL, SITE_URL, isHttpUrl, sameUrl } from "@/lib/site"
 
 // /links/llms.txt: resumen en Markdown para asistentes de IA (https://llmstxt.org), generado en build desde links.json
 export const dynamic = "force-static"
@@ -24,6 +24,7 @@ export async function GET() {
     "",
     profile.alternateName?.length ? `También conocido como: ${profile.alternateName.join(", ")}.` : "",
     profile.knowsAbout?.length ? `Especialidad: ${profile.knowsAbout.join(", ")}.` : "",
+    `Portfolio: ${PORTFOLIO_URL}`,
     `Página oficial de enlaces: ${SITE_URL}`,
     "",
     ...categories

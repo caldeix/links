@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Cormorant, Roboto } from "next/font/google"
 import "./globals.css"
 import { getLinksData } from "@/lib/links-data"
-import { SITE_ORIGIN, SITE_TITLE, SITE_URL, absoluteUrl } from "@/lib/site"
+import { PORTFOLIO_URL, SITE_NAME, SITE_ORIGIN, SITE_TITLE, SITE_URL, absoluteUrl } from "@/lib/site"
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: SITE_TITLE,
     description,
     applicationName: SITE_TITLE,
-    authors: [{ name: profile.name, url: SITE_URL }],
-    creator: "Caldeix",
+    authors: [{ name: profile.name, url: PORTFOLIO_URL }],
+    creator: profile.name,
     keywords: [profile.name, ...(profile.alternateName ?? []), ...(profile.knowsAbout ?? []), "portfolio", "proyectos"],
     alternates: { canonical: SITE_URL },
     manifest: `${BASE}/site.webmanifest`,
@@ -46,14 +46,14 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "profile",
       locale: "es_ES",
       url: SITE_URL,
-      siteName: SITE_TITLE,
-      title: `${profile.name} · Caldeix`,
+      siteName: SITE_NAME,
+      title: SITE_TITLE,
       description,
       ...(image && { images: [{ url: image, width: 600, height: 600, alt: profile.name }] }),
     },
     twitter: {
       card: "summary",
-      title: `${profile.name} · Caldeix`,
+      title: SITE_TITLE,
       description,
       ...(image && { images: [image] }),
     },

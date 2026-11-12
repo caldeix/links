@@ -1,16 +1,16 @@
 import type { LinksData } from "@/types"
-import { SITE_URL, SITE_TITLE, absoluteUrl, isHttpUrl, sameUrl } from "./site"
-
-const PERSON_ID = `${SITE_URL}#person`
+import { PERSON_ID, PORTFOLIO_URL, SITE_URL, SITE_TITLE, WEBSITE_ID, absoluteUrl, isHttpUrl, sameUrl } from "./site"
 
 // JSON-LD schema.org (ProfilePage + Person + proyectos) generado desde links.json.
 // Es lo que buscadores e IA usan para asociar el nombre con esta web, el portfolio, LinkedIn y GitHub.
+// La Person usa el mismo @id y la misma url que en el portfolio, para que Google la trate como una sola
+// persona cuya página principal es el portfolio, y el ProfilePage forma parte del WebSite de la portada.
 export function buildStructuredData({ profile, links }: LinksData) {
   const isImage = profile.emoji.startsWith("/")
 
-  // Otros perfiles de la misma persona: enlaces http(s) de la categoría "perfil"
+  // Otros perfiles de la misma persona: enlaces http(s) de la categoría "perfil" (el portfolio ya es su url)
   const sameAs = links
-    .filter((link) => link.category === "perfil" && isHttpUrl(link.url))
+    .filter((link) => link.category === "perfil" && isHttpUrl(link.url) && !sameUrl(link.url, PORTFOLIO_URL))
     .map((link) => link.url)
 
   const projects = links
@@ -47,6 +47,7 @@ export function buildStructuredData({ profile, links }: LinksData) {
         url: SITE_URL,
         name: SITE_TITLE,
         inLanguage: "es",
+        isPartOf: { "@id": WEBSITE_ID },
         mainEntity: { "@id": PERSON_ID },
       },
       {
@@ -56,7 +57,7 @@ export function buildStructuredData({ profile, links }: LinksData) {
         ...(profile.alternateName?.length && { alternateName: profile.alternateName }),
         ...(profile.jobTitle && { jobTitle: profile.jobTitle }),
         description: profile.description,
-        url: SITE_URL,
+        url: PORTFOLIO_URL,
         ...(isImage && { image: absoluteUrl(profile.emoji) }),
         sameAs,
         ...(profile.knowsAbout?.length && { knowsAbout: profile.knowsAbout }),
